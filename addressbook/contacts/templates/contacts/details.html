@@ -1,0 +1,12 @@
+{% if contact %}
+<h1>{{contact.name}}</h1>
+
+Cell: {{contact.cell}} <br/>
+Email: {{contact.email}} <br/>
+Address: {{contact.address}} <br/>
+Dob: {{contact.dob}} <br/>
+Age: {{contact.get_age}} <br/>
+
+<a href='{% url "contacts:index" %}'>Go Back</a>
+
+{% endif %}

@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'contacts/style.css' %}" />
+
+<h1>Address Book</h1>
+<a href='{% url "contacts:add" %}'>Add Contact</a>
+{% if contacts_list %}
+<ol>
+  {% for contact in contacts_list %}
+  <li><a href='{% url "contacts:detail" contact.id %}'>{{contact.name}}</a></li>
+  {% endfor %}
+</ol>
+{% else %}
+<p>No contacts are available.</p>
+{% endif %}

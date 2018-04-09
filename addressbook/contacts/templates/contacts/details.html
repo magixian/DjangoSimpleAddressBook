@@ -1,12 +1,24 @@
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'contacts/style.css' %}" />
+
 {% if contact %}
-<h1>{{contact.name}}</h1>
+<div class="container">
+  <h1>{{contact.name}}</h1>
 
-Cell: {{contact.cell}} <br/>
-Email: {{contact.email}} <br/>
-Address: {{contact.address}} <br/>
-Dob: {{contact.dob}} <br/>
-Age: {{contact.get_age}} <br/>
-
-<a href='{% url "contacts:index" %}'>Go Back</a>
-
+  <hr/>
+  
+  <div class="row">
+    <div class="col-sm-2">
+      <a href='{% url "contacts:index" %}'>Go Back</a>
+    </div>
+    <div class="col-sm-10">
+      Cell No.        : {{contact.cell}} <br/>
+      Email Address   : {{contact.email}} <br/>
+      Physical Address: {{contact.address}} <br/>
+      Date of Birth   : {{contact.dob}} <br/>
+      Age             : {{contact.get_age}} <br/>
+    </div>
+  </div>
+</div>
 {% endif %}

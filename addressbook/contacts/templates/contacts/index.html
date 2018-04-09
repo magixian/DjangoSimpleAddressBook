@@ -1,14 +1,26 @@
 {% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="{% static 'contacts/style.css' %}" />
 
-<h1>Address Book</h1>
-<a href='{% url "contacts:add" %}'>Add Contact</a>
-{% if contacts_list %}
-<ol>
-  {% for contact in contacts_list %}
-  <li><a href='{% url "contacts:detail" contact.id %}'>{{contact.name}}</a></li>
-  {% endfor %}
-</ol>
-{% else %}
-<p>No contacts are available.</p>
-{% endif %}
+<div class="container">
+  <h1>Address Book</h1>
+
+  <hr/>
+  
+  <div class="row">
+    <div class="col-sm-2">
+      <a href='{% url "contacts:add" %}'>Add Contact</a>
+    </div>
+    <div class="col-sm-10">
+      {% if contacts_list %}
+      <ol>
+        {% for contact in contacts_list %}
+        <li><a href='{% url "contacts:detail" contact.id %}'>{{contact.name}}</a></li>
+        {% endfor %}
+      </ol>
+      {% else %}
+      <p>No contacts are available.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>

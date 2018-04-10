@@ -23,16 +23,6 @@ class DetailView(generic.DetailView):
 def add(request, pk=None):
     # Check to see if a key has been sent. If true then allow edit functionality.
     if pk == None:
-        form = ContactForm()
-    else:
-        contact = get_object_or_404(Contact, pk=pk)
-        form = ContactForm(request.POST or None, instance=contact)
-
-    return render(request, 'contacts/add.html', {'form': form,})
-
-def add(request, pk=None):
-    # Check to see if a key has been sent. If true then allow edit functionality.
-    if pk == None:
         return render(request, 'contacts/add.html', {'form': ContactForm(),})
     else:
         contact = get_object_or_404(Contact, pk=pk)

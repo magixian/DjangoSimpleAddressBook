@@ -50,6 +50,7 @@ def save(request, pk=None):
 
         if form.is_valid():
             contact = form.save(commit=False)
+            contact.age = contact.get_age() # save age seperately
             contact.save()
             return HttpResponseRedirect(reverse('contacts:detail', args=(contact.id,)))
         else:

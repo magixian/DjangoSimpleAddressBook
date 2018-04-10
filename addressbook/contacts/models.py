@@ -10,6 +10,7 @@ class Contact(models.Model):
     email = models.EmailField('Email Address')
     address = models.CharField('Address', max_length=200)
     dob = models.DateField('Date Of Birth')
+    age = models.IntegerField('Age', default=0)
 
     def get_age(self):
         return date.today().year - self.dob.year

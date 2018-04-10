@@ -4,7 +4,11 @@
 
 {% block content %}
 <div class="container">
-  <h1>Add Contact</h1>
+  {% if contact %}
+    <h1>Edit Contact</h1>
+  {% else %}
+    <h1>Add Contact</h1>
+  {% endif %}
 
   {% if error_message %}
     <p><strong>{{error_message}}</strong></p>
@@ -12,13 +16,23 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <form class="form-contacts" action="{% url 'contacts:save' %}" method="post">
+      {% if contact %}
+        <form class="form-contacts" action="{% url 'contacts:update' contact.id %}" method="post">
+      {% else %}
+        <form class="form-contacts" action="{% url 'contacts:save' %}" method="post">
+      {% endif %}
+
         {% csrf_token %}
         <table>
           {{form}}
         </table>
         <hr/>
         <input type="submit" value="Save" class="btn btn-primary" />
+        {% if contact %}
+          <a class="btn btn-success" href='{% url "contacts:detail" contact.id  %}'>Back</a>
+        {% endif %}
+
+        <br/>
       </form>
     </div>
   </div>

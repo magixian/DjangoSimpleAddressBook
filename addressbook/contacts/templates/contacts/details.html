@@ -7,17 +7,31 @@
   <h1>{{contact.name}}</h1>
 
   <hr/>
-  
+
   <div class="row">
     <div class="col-sm-2">
-      <a href='{% url "contacts:index" %}'>Go Back</a>
+      <a href='{% url "contacts:index" %}'>Go Back</a> <br/>
+      <a href='{% url "contacts:edit" contact.id  %}'>Edit</a> <br/>
+      <a href='{% url "contacts:delete" contact.id  %}'>Delete</a>
     </div>
     <div class="col-sm-10">
-      Cell No.        : {{contact.cell}} <br/>
-      Email Address   : {{contact.email}} <br/>
-      Physical Address: {{contact.address}} <br/>
-      Date of Birth   : {{contact.dob}} <br/>
-      Age             : {{contact.get_age}} <br/>
+      <div class="row">
+        <!-- contact cell number -->
+        <div class="col-sm-4 col-md-2">Cell No.</div>
+        <div class="col-sm-8 col-md-10">: {{contact.cell}}</div>
+        <!-- contact email -->
+        <div class="col-sm-4 col-md-2">Email</div>
+        <div class="col-sm-8 col-md-10">: {{contact.email}}</div>
+        <!-- contact address -->
+        <div class="col-sm-4 col-md-2">Physical Address</div>
+        <div class="col-sm-8 col-md-10">: {{contact.address}}</div>
+        <!-- contact dob -->
+        <div class="col-sm-4 col-md-2">Date of Birth</div>
+        <div class="col-sm-8 col-md-10">: {{contact.dob}}</div>
+        <!-- contact age -->
+        <div class="col-sm-4 col-md-2">Age</div>
+        <div class="col-sm-8 col-md-10">: {{contact.get_age}}</div>
+      </div>
     </div>
   </div>
 </div>
